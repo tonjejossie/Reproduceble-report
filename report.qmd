@@ -5,23 +5,16 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## Background
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+The iris dataset contains measurements of flowers from three species: setosa, versicolor, and virginica. It is available as an example dataset in R.
 
-## Running Code
+In this report, I explore how petal length varies between the three species.
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Research question
 
-```{r}
-1 + 1
-```
+How does petal length vary between the three iris species?
 
-You can add options to executable code like this
+## Data
 
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+The dataset contains 150 observations, with 50 flowers from each species. Petal length is measured in centimetres.
