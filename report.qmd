@@ -3,6 +3,8 @@ title: "A simple analysis of Iris data"
 author: "Tonje Johnsen"
 format: html
 editor: visual
+bibliography: resources/references.bib
+csl: resources/apa.csl
 ---
 
 ## Background
@@ -17,4 +19,52 @@ How does petal length vary between the three iris species?
 
 ## Data
 
+All analyses were performed using R [@Rsoftware].
+
 The dataset contains 150 observations, with 50 flowers from each species. Petal length is measured in centimetres.
+
+## Results
+
+The boxplot below shows the distribution of petal length for each of the three iris species.
+
+```{r}
+#| label: fig-petal-length
+#| fig-cap: "Distribution of petal length in centimetres for three iris species. Each group contains 50 flowers."
+#| echo: false
+
+boxplot(
+  Petal.Length ~ Species,
+  data = iris,
+  main = "Petal length by iris species",
+  xlab = "Species",
+  ylab = "Petal length (cm)",
+  col = c("#88CCEE", "#DDCC77", "#CC6677")
+)
+```
+
+Setosa has the shortest petals, while virginica generally has the longest. The distributions for versicolor and virginica overlap.
+
+## Summary table
+
+The table summarises petal length for each species.
+
+```{r}
+#| label: tbl-petal-summary
+#| tbl-cap: "Sample size, mean and standard deviation of petal length by iris species."
+#| echo: false
+
+petal_summary <- data.frame(
+  Species = levels(iris$Species),
+  N = as.integer(table(iris$Species)),
+  Mean = as.numeric(tapply(iris$Petal.Length, iris$Species, mean)),
+  SD = as.numeric(tapply(iris$Petal.Length, iris$Species, sd))
+)
+
+knitr::kable(
+  petal_summary,
+  digits = 2,
+  col.names = c("Species", "N", "Mean (cm)", "SD (cm)")
+)
+```
+
+## References
